@@ -36,3 +36,7 @@ class TestLaboratoryInitialization:
     def test_create_laboratory_with_whitespace_only_raises_value_error(self):  
         with pytest.raises(ValueError):
             Laboratory(["   "])
+
+    def test_create_laboratory_with_duplicates_raises_value_error(self):
+        with pytest.raises(ValueError):
+            Laboratory(["Water", "Water"])
