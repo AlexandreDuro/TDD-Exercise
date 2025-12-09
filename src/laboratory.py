@@ -5,6 +5,8 @@ class Laboratory:
         for s in substances:
             if not isinstance(s, str):
                 raise TypeError("All substances must be strings")
+            if not s.strip():
+                raise ValueError("Substance name cannot be empty or whitespace")
         self._stocks = {s: 0.0 for s in substances}
 
     def get_quantity(self, substance):
