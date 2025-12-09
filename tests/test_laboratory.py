@@ -40,3 +40,10 @@ class TestLaboratoryInitialization:
     def test_create_laboratory_with_duplicates_raises_value_error(self):
         with pytest.raises(ValueError):
             Laboratory(["Water", "Water"])
+
+class TestLaboratoryAdd:
+
+    def test_add_quantity_to_substance(self):
+        lab = Laboratory(["Water"])
+        lab.add("Water", 5.5)
+        assert lab.get_quantity("Water") == 5.5
