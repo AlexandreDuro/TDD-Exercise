@@ -9,5 +9,5 @@ class TestLaboratoryInitialization:
         assert lab is not None   
 
     def test_create_laboratory_with_valid_substances(self):
-        lab = Laboratory(["Water", "Ethanol"]
+        lab = Laboratory(["Water", "Ethanol"])
         assert lab is not None
