@@ -1,5 +1,5 @@
 class Laboratory:
-    def __init__(self, substances):
+    def __init__(self, substances, reactions=None):
         if substances is None:
             raise TypeError("Substances list cannot be None")
         for s in substances:
@@ -10,6 +10,7 @@ class Laboratory:
         if len(set(substances)) != len(substances):
             raise ValueError("Substances list cannot contain duplicates")
         self._stocks = {s: 0.0 for s in substances}
+        self._reactions = reactions if reactions is not None else {}
 
     def get_quantity(self, substance):
       if substance not in self._stocks:
