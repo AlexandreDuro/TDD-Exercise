@@ -52,3 +52,8 @@ class TestLaboratoryAdd:
         lab = Laboratory(["Water"])
         with pytest.raises(ValueError):
             lab.add("Unknown", 5.0)
+
+    def test_add_negative_quantity_raises_value_error(self):
+        lab = Laboratory(["Water"])
+        with pytest.raises(ValueError):
+            lab.add("Water", -5.0)
