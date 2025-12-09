@@ -62,3 +62,8 @@ class TestLaboratoryAdd:
         lab = Laboratory(["Water"])
         with pytest.raises(TypeError):
           lab.add("Water", "five")
+
+class TestLaboratoryReactions:
+    def test_create_laboratory_with_empty_reactions(self):
+        lab = Laboratory(["Water"], {})
+        assert lab is not None
