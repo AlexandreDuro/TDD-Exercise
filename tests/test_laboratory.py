@@ -13,10 +13,10 @@ class TestLaboratoryInitialization:
         assert lab is not None
 
     def test_get_quantity_returns_zero_for_known_substance(self):
-      lab = Laboratory(["Water"])
-      assert lab.get_quantity("Water") == 0.0
+        lab = Laboratory(["Water"])
+        assert lab.get_quantity("Water") == 0.0
 
-     def test_get_quantity_raises_for_unknown_substance(self):
-      lab = Laboratory(["Water"])
-      with pytest.raises(ValueError):
+    def test_get_quantity_raises_for_unknown_substance(self):
+        lab = Laboratory(["Water", "Ethanol"])
+        with pytest.raises(ValueError, match="Unknown substance: Unknown"):
           lab.get_quantity("Unknown")
