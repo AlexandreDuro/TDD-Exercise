@@ -12,6 +12,9 @@ class Laboratory:
         self._stocks = {s: 0.0 for s in substances}
         self._reactions = reactions if reactions is not None else {}
 
+        for product in self._reactions:
+            self._stocks[product] = 0.0
+
         for product, ingredients in self._reactions.items():
             for substance, qty in ingredients:
                 if substance not in self._stocks:
@@ -22,9 +25,11 @@ class Laboratory:
           raise ValueError(f"Unknown substance: {substance}")
       return self._stocks[substance]
 
-    def add(self, substance, quantity):
-        if substance not in self._stocks:
-            raise ValueError(f"Unknown substance: {substance}")
+    def add(self, name, quantity):
+        if name not in self._stocks:
+            raise ValueError(f"Unknown substance: {name}")
+        if not isinstance(quantity, (int, float)):
+            raise TypeError("Quantity must be a number")
         if quantity < 0:
             raise ValueError("Quantity cannot be negative")
-        self._stocks[substance] += quantity
+        self._stocks[name] += quantity
