@@ -33,3 +33,25 @@ class Laboratory:
         if quantity < 0:
             raise ValueError("Quantity cannot be negative")
         self._stocks[name] += quantity
+
+    def make(self, product, quantity):
+        if product not in self._reactions:
+            raise ValueError(f"Unknown product: {product}")
+
+        ingredients = self._reactions[product]
+
+        # Calculer combien on peut faire
+        max_possible = quantity
+        for substance, ratio in ingredients:
+            available = self._stocks[substance]
+            possible = available / ratio
+            max_possible = min(max_possible, possible)
+
+        # Consommer les ingrédients
+        for substance, ratio in ingredients:
+            self._stocks[substance] -= max_possible * ratio
+
+        # Ajouter le produit
+        self._stocks[product] += max_possible
+
+        return max_possible
