@@ -57,3 +57,8 @@ class TestLaboratoryAdd:
         lab = Laboratory(["Water"])
         with pytest.raises(ValueError):
             lab.add("Water", -5.0)
+
+    def test_add_non_numeric_quantity_raises_type_error(self):
+        lab = Laboratory(["Water"])
+        with pytest.raises(TypeError):
+          lab.add("Water", "five")
