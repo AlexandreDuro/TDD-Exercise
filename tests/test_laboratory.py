@@ -20,3 +20,7 @@ class TestLaboratoryInitialization:
         lab = Laboratory(["Water", "Ethanol"])
         with pytest.raises(ValueError, match="Unknown substance: Unknown"):
           lab.get_quantity("Unknown")
+
+    def test_create_laboratory_with_none_raises_type_error(self):
+        with pytest.raises(TypeError, match="Substances must be a list"):
+            Laboratory(None)
