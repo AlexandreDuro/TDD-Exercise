@@ -120,3 +120,16 @@ class TestLaboratoryMake:
         lab = Laboratory(["A"], {})
         with pytest.raises(ValueError):
             lab.make("Unknown", 5.0)
+
+    def test_make_product_using_other_product(self):
+        reactions = {
+            "Intermediate": [("A", 1.0)],
+            "Final": [("Intermediate", 2.0), ("B", 1.0)]
+        }
+        lab = Laboratory(["A", "B"], reactions)
+        lab.add("Intermediate", 10.0)
+        lab.add("B", 5.0)
+        result = lab.make("Final", 5.0)
+        assert result == 5.0
+        assert lab.get_quantity("Intermediate") == 0.0
+        assert lab.get_quantity("B") == 0.0
