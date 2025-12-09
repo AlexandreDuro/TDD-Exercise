@@ -63,6 +63,12 @@ class TestLaboratoryAdd:
         with pytest.raises(TypeError):
           lab.add("Water", "five")
 
+    def test_add_product_to_stock(self):
+        reactions = {"Aspirin": [("Acid", 1.0)]}
+        lab = Laboratory(["Acid"], reactions)
+        lab.add("Aspirin", 10.0)
+        assert lab.get_quantity("Aspirin") == 10.0
+
 class TestLaboratoryReactions:
     def test_create_laboratory_with_empty_reactions(self):
         lab = Laboratory(["Water"], {})
