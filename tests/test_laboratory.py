@@ -24,3 +24,7 @@ class TestLaboratoryInitialization:
     def test_create_laboratory_with_none_raises_type_error(self):
         with pytest.raises(TypeError):
             Laboratory(None)
+
+    def test_create_laboratory_with_non_string_element_raises_type_error(self):
+        with pytest.raises(TypeError):
+            Laboratory(["Water", 123])
