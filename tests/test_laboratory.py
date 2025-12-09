@@ -47,3 +47,8 @@ class TestLaboratoryAdd:
         lab = Laboratory(["Water"])
         lab.add("Water", 5.5)
         assert lab.get_quantity("Water") == 5.5
+
+    def test_add_to_unknown_substance_raises_value_error(self):
+        lab = Laboratory(["Water"])
+        with pytest.raises(ValueError):
+            lab.add("Unknown", 5.0)
