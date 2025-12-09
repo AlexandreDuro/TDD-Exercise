@@ -115,3 +115,8 @@ class TestLaboratoryMake:
         assert result == 3.0
         assert lab.get_quantity("A") == 7.0
         assert lab.get_quantity("B") == 0.0
+    
+    def test_make_unknown_product_raises_value_error(self):
+        lab = Laboratory(["A"], {})
+        with pytest.raises(ValueError):
+            lab.make("Unknown", 5.0)
