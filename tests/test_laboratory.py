@@ -96,3 +96,12 @@ class TestLaboratoryMake:
         lab.add("B", 20.0)
         result = lab.make("Product", 5.0)
         assert result == 5.0
+
+    def test_make_consumes_substances(self):
+        reactions = {"Product": [("A", 1.0), ("B", 2.0)]}
+        lab = Laboratory(["A", "B"], reactions)
+        lab.add("A", 10.0)
+        lab.add("B", 20.0)
+        lab.make("Product", 5.0)
+        assert lab.get_quantity("A") == 5.0   # 10 - 5*1
+        assert lab.get_quantity("B") == 10.0  # 20 - 5*2
