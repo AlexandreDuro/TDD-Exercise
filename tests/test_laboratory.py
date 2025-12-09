@@ -11,3 +11,7 @@ class TestLaboratoryInitialization:
     def test_create_laboratory_with_valid_substances(self):
         lab = Laboratory(["Water", "Ethanol"])
         assert lab is not None
+
+    def test_get_quantity_returns_zero_for_known_substance(self):
+      lab = Laboratory(["Water"])
+      assert lab.get_quantity("Water") == 0.0
