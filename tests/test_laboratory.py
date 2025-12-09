@@ -74,3 +74,10 @@ class TestLaboratoryReactions:
         }
         lab = Laboratory(["Salicylic Acid", "Acetic Anhydride"], reactions)
         assert lab is not None
+
+    def test_reaction_with_unknown_substance_raises_value_error(self):
+        reactions = {
+            "Product": [("Unknown", 1.0)]
+        }
+        with pytest.raises(ValueError):
+            Laboratory(["Water"], reactions)
