@@ -67,3 +67,10 @@ class TestLaboratoryReactions:
     def test_create_laboratory_with_empty_reactions(self):
         lab = Laboratory(["Water"], {})
         assert lab is not None
+    
+    def test_create_laboratory_with_valid_reactions(self):
+        reactions = {
+            "Aspirin": [("Salicylic Acid", 1.0), ("Acetic Anhydride", 1.2)]
+        }
+        lab = Laboratory(["Salicylic Acid", "Acetic Anhydride"], reactions)
+        assert lab is not None
