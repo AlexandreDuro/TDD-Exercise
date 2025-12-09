@@ -15,3 +15,6 @@ class Laboratory:
       if substance not in self._stocks:
           raise ValueError(f"Unknown substance: {substance}")
       return self._stocks[substance]
+
+    def add(self, substance, quantity):
+        self._stocks[substance] += quantity
