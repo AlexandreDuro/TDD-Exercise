@@ -87,3 +87,12 @@ class TestLaboratoryReactions:
         }
         with pytest.raises(ValueError):
             Laboratory(["Water"], reactions)
+
+class TestLaboratoryMake:
+    def test_make_product_returns_quantity(self):
+        reactions = {"Product": [("A", 1.0), ("B", 2.0)]}
+        lab = Laboratory(["A", "B"], reactions)
+        lab.add("A", 10.0)
+        lab.add("B", 20.0)
+        result = lab.make("Product", 5.0)
+        assert result == 5.0
