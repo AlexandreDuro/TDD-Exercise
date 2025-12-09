@@ -15,3 +15,8 @@ class TestLaboratoryInitialization:
     def test_get_quantity_returns_zero_for_known_substance(self):
       lab = Laboratory(["Water"])
       assert lab.get_quantity("Water") == 0.0
+
+     def test_get_quantity_raises_for_unknown_substance(self):
+      lab = Laboratory(["Water"])
+      with pytest.raises(ValueError):
+          lab.get_quantity("Unknown")
