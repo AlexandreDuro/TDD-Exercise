@@ -28,3 +28,11 @@ class TestLaboratoryInitialization:
     def test_create_laboratory_with_non_string_element_raises_type_error(self):
         with pytest.raises(TypeError):
             Laboratory(["Water", 123])
+
+    def test_create_laboratory_with_empty_string_raises_value_error(self):
+        with pytest.raises(ValueError):
+            Laboratory([""])
+
+    def test_create_laboratory_with_whitespace_only_raises_value_error(self):  
+        with pytest.raises(ValueError):
+            Laboratory(["   "])
