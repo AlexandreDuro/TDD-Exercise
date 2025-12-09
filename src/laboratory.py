@@ -12,6 +12,11 @@ class Laboratory:
         self._stocks = {s: 0.0 for s in substances}
         self._reactions = reactions if reactions is not None else {}
 
+        for product, ingredients in self._reactions.items():
+            for substance, qty in ingredients:
+                if substance not in self._stocks:
+                    raise ValueError(f"Unknown substance: {substance} in reaction for {product}")
+
     def get_quantity(self, substance):
       if substance not in self._stocks:
           raise ValueError(f"Unknown substance: {substance}")
